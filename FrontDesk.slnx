@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FrontDesk.Api/FrontDesk.Api.csproj" Id="f8449770-b895-4f22-9020-20b1e01a45a2" />
+    <Project Path="src/FrontDesk.Db/FrontDesk.Db.csproj" Id="38fef123-6bd6-4774-be2b-dfc37e54a191" />
+    <Project Path="src/FrontDesk.Shared/FrontDesk.Shared.csproj" Id="a95a4a80-81f5-4095-8c5b-75edc54e26e8" />
+    <Project Path="src/FrontDesk.Ui/FrontDesk.Ui.csproj" Id="bc27756f-20f3-4af1-81b6-d0dc6d6ef0f1" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FrontDesk.IntegrationTests/FrontDesk.IntegrationTests.csproj" Id="7904ced7-73da-4220-9051-a1cb157e4ca6" />
+    <Project Path="tests/FrontDesk.UiTests/FrontDesk.UiTests.csproj" Id="11245b03-a800-45a0-9690-8147e8bf4ba7" />
+    <Project Path="tests/FrontDesk.UnitTests/FrontDesk.UnitTests.csproj" Id="357168b8-060e-4ccd-8a32-abac4cde6b11" />
+  </Folder>
+</Solution>

@@ -1,0 +1,31 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+<Design.PreviewWith>
+	<Border Classes="Skeleton"
+			Padding="20"
+			Width="200"
+			Height="200"/>
+</Design.PreviewWith>
+
+    <!-- Skeleton -->
+	<Style Selector="Border.Skeleton">
+		<Style.Animations>
+			<Animation Duration="0:0:0.7" IterationCount="INFINITE">
+				<KeyFrame Cue="0%">
+					<Setter Property="Opacity" Value="0.36"/>
+				</KeyFrame>
+				<KeyFrame Cue="50%">
+					<Setter Property="Opacity" Value="0.99"/>
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="Opacity" Value="0.36"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="VerticalAlignment" Value="Stretch"/>
+		<Setter Property="Background" Value="LightBlue"/>
+	</Style>
+
+</Styles>

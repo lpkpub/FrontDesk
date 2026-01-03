@@ -1,0 +1,148 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FrontDesk.Ui.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="FrontDesk.Ui.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FrontDesk"
+        Height="460"
+        MinHeight="460"
+        Width="600"
+        MinWidth="600">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Margin="5">
+        <Grid.Styles>
+				<Style Selector="Button">
+					<Setter Property="Width" Value="100"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="0,5,5,0"/>
+                </Style>
+            </Grid.Styles>
+
+        <!-- UserType selection -->
+        <Grid ColumnDefinitions="Auto,Auto,*">
+            <Grid.Styles>
+                <Style Selector="TextBlock">
+					<Setter Property="FontSize" Value="22"/>
+                </Style>
+            </Grid.Styles>
+            <!-- Staff button -->
+            <Button Command="{Binding UserTypeCommand}"
+                    CommandParameter="staff"
+                    IsVisible="{Binding IsStaffVisible}">
+				<TextBlock Text="Staff"/>
+            </Button>
+            <!-- Visitor button -->
+			<Button Grid.Column="1"
+                Command="{Binding UserTypeCommand}"
+                CommandParameter="visitor"
+                IsVisible="{Binding IsVisitorVisible}">
+				<TextBlock Text="Visitor"/>
+            </Button>
+            <!-- Cancel button -->
+			<Button Grid.Column="2"
+                Command="{Binding ResetCommand}"
+                HorizontalAlignment="Right">
+				<TextBlock Text="Cancel"/>
+            </Button>
+        </Grid>
+
+        <!-- Visit action selection -->
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
+            <Grid.Styles>
+                <Style Selector="TextBlock">
+					<Setter Property="FontSize" Value="22"/>
+                </Style>
+            </Grid.Styles>
+            <!-- Entry button -->
+            <Button IsVisible="{Binding IsEntryVisible}"
+                    Command="{Binding ActionTypeCommand}"
+                    CommandParameter="entry">
+				<TextBlock Text="Entry"/>
+            </Button>
+            <!-- Exit button -->
+			<Button Grid.Column="1" 
+                IsVisible="{Binding IsExitVisible}"
+                Command="{Binding ActionTypeCommand}"
+                CommandParameter="exit">
+				<TextBlock Text="Exit"/>
+            </Button>
+        </Grid>
+
+        <!-- Info Message -->
+        <Grid Grid.Row="2">
+			<TextBlock IsVisible="{Binding IsInfoVisible}" Text="{Binding InfoMessage}" Foreground="Red"/>
+        </Grid>
+
+        <!-- Request input -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*">
+             <StackPanel>
+                 <!-- Pin -->
+			    <StackPanel IsVisible="{Binding IsPinVisible}">
+                    <TextBlock>Pin</TextBlock>
+                    <TextBox PasswordChar="*" Text="{Binding Pin}"/>
+                </StackPanel>
+
+                 <!-- Visitor fields input -->
+                 <StackPanel IsVisible="{Binding IsVisitorInputVisible}">
+                     <StackPanel>
+				        <TextBlock>Name</TextBlock>
+                        <TextBox Text="{Binding Name}"/>
+                     </StackPanel>
+                     <StackPanel>
+				        <TextBlock>Company</TextBlock>
+                        <TextBox Text="{Binding Company}"/>
+                     </StackPanel>
+                     <StackPanel>
+				        <TextBlock>Phone Number</TextBlock>
+                        <TextBox Text="{Binding PhoneNumber}"/>
+                     </StackPanel>
+                     <StackPanel>
+				        <TextBlock>Reason</TextBlock>
+                        <TextBox Text="{Binding Reason}"/>
+                     </StackPanel>
+                 </StackPanel>
+                 
+                 <!-- Submit Button -->
+                 <Button HorizontalAlignment="Center"
+                         Height="50"
+                         Margin="0,15"
+                         Command="{Binding SubmitCommand}"
+                         IsVisible="{Binding IsSubmitVisible}"
+                         IsEnabled="{Binding IsSubmitEnabled}">
+                     <TextBlock Text="Submit"/>
+                 </Button>
+
+            </StackPanel>
+
+            <!-- Response -->
+            <Grid Grid.Column="1">
+                <Border Classes="Skeleton"
+                        Margin="5"
+                        IsVisible="{Binding IsAwaitingResponse}">
+					<TextBlock Text="Awaiting response..." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsVisible="{Binding IsResponseVisible}"
+                            Margin="5"
+                            Background="LightBlue">
+					<TextBlock Text="{Binding ResponseMessage}" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                    <Button Command="{Binding ResetCommand}"
+                            HorizontalAlignment="Center">
+						<TextBlock Text="Confirm"/>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

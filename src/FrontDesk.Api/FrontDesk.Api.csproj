@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>f89be5a0-2f41-454e-8487-9ee08d5f97e9</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FrontDesk.Db\FrontDesk.Db.csproj" />
+    <ProjectReference Include="..\FrontDesk.Shared\FrontDesk.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
