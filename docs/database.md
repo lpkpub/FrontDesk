@@ -7,20 +7,26 @@
 - All conventional C# Pascal-case naming is converted to snake_case.
 
 ## Tables
-### User
-- Id
-- Name *string*
-- Pin *string, nullable, index, 6-digit*
-- UserType *enum: string conversion*
-- IsActive *bool*
-- Visits *ICollection, Visit collection navigation*
+```csharp
 
-### Visit
-- Id
-- EntryAt *DateTime*
-- ExitAt *DateTime, nullable*
-- UserId *Guid, User foreign key*
-- User *User, navigation*
-- Company *string, nullable*
-- PhoneNumber *string, nullable*
-- Reason *string*
+User {
+	Guid		Id
+	string		Name
+	string?		Pin			// index, 6-digit-only
+	string		UserType	// converted from UserType enum
+	bool		IsActive
+	ICollection	Visits		// Collection navigation
+}
+
+Visit {
+	Guid		Id
+	DateTime	EntryAt
+	DateTime?	ExitAt
+	Guid		UserId		// FK -> User.Id
+	User		User		// navigation
+	string?		Company
+	string?		PhoneNumber
+	string		Reason
+}
+
+```
